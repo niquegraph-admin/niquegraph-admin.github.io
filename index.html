@@ -1,7 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Logo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+    }
+    .centered-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full screen height */
+      width: 100%;
+    }
+    img {
+      max-width: 80vw; /* Responsive width on desktop */
+      max-height: 80vh; /* Responsive height */
+      height: auto;
+      width: auto;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World!</h1>
-<p>I'm about to be niquegraph website.</p>
+  <div class="centered-container">
+    <img src="logo.png" alt="My Logo" />
+  </div>
 </body>
 </html>
