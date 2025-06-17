@@ -6,185 +6,175 @@
   <title>Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: 'Poppins', sans-serif;
-      background-color: black;
+      background: black;
       color: white;
-      overflow-x: hidden;
+      height: 100%;
+      overflow: hidden;
     }
 
-    /* Shared styles */
-    .insta-button {
-      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 500;
+    a {
       text-decoration: none;
-      font-size: 1rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transform: translateY(20px);
     }
 
-    .insta-button:hover {
-      transform: scale(1.05);
-    }
-
+    /* === Shared Footer === */
     .footer {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9rem;
-      margin-top: 20px;
-      opacity: 0;
-      transform: translateY(20px);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 10px 0;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-
-    /* Desktop styles */
+    /* === Desktop Styles === */
     @media (min-width: 601px) {
-      .mobile-only {
-        display: none;
-      }
-
-      .desktop-content {
-        min-height: 100vh;
+      body {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 20px;
+      }
+
+      .desktop-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .desktop-content img {
-        max-width: 60vw;
-        max-height: 30vh;
+        max-width: 300px;
+        height: auto;
       }
 
-      .coming-soon {
-        font-size: 1.8rem;
-        margin: 40px 0;
-        letter-spacing: 2px;
+      .desktop-content .coming-soon {
+        font-size: 2rem;
+        margin: 30px 0 20px;
       }
 
-      .insta-button, .footer {
-        opacity: 1;
-        transform: translateY(0);
+      .insta-button {
+        background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: transform 0.2s ease;
+      }
+
+      .insta-button:hover {
+        transform: scale(1.05);
+      }
+
+      .footer {
+        margin-top: 30px;
       }
     }
 
-    /* Mobile styles */
+    /* === Mobile Styles === */
     @media (max-width: 600px) {
-      .desktop-content {
-        display: none;
-      }
-
-      .mobile-hero {
-        height: 100vh;
+      body {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        position: relative;
+        height: 100vh;
         text-align: center;
-        padding: 20px;
+        padding: 0 20px;
       }
 
-      .mobile-hero img {
-        width: 80vw;
+      .mobile-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+      }
+
+      .mobile-wrapper img {
+        width: 70vw;
+        max-width: 250px;
         height: auto;
         margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 1.5s forwards;
+        animation: fadeIn 1s ease forwards;
       }
 
-      .mobile-hero .coming-soon {
+      .coming-soon {
         font-size: 1.3rem;
-        margin: 0;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 1.5s forwards;
+        margin-bottom: 20px;
+        animation: fadeIn 1.2s ease forwards;
       }
 
-      .mobile-scroll-down {
-        position: absolute;
-        bottom: 20px;
-        font-size: 1rem;
-        color: #ccc;
-        animation: flicker 2s infinite;
-      }
-
-      .mobile-scroll-section {
-        min-height: 100vh;
+      .insta-button {
+        background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+        border: none;
+        border-radius: 50%;
+        padding: 14px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        padding: 20px;
+        width: 48px;
+        height: 48px;
+        transition: transform 0.2s ease;
       }
 
-      .show {
-        animation: fadeIn 1s forwards;
+      .insta-button:hover {
+        transform: scale(1.1);
+      }
+
+      .insta-button img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .footer {
+        padding: 10px 0;
+        font-size: 0.75rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Mobile Only Section -->
-  <div class="mobile-only">
-    <div class="mobile-hero">
-      <img src="logo.png" alt="Logo" />
-      <div class="coming-soon">COMING SOON</div>
-      <div class="mobile-scroll-down">Scroll down ↓</div>
-    </div>
-
-    <div class="mobile-scroll-section">
-      <a class="insta-button" href="https://instagram.com/yourusername" target="_blank">
-        Follow us on Instagram
-      </a>
-      <div class="footer">a Nik Iman project – 2025</div>
-    </div>
-  </div>
-
-  <!-- ✅ Desktop Only Section -->
+  <!-- Desktop -->
   <div class="desktop-content">
     <img src="logo.png" alt="Logo" />
     <div class="coming-soon">COMING SOON</div>
-    <a class="insta-button" href="https://instagram.com/niquegraph" target="_blank">
+    <a class="insta-button" href="https://instagram.com/yourusername" target="_blank">
       Follow us on Instagram
     </a>
     <div class="footer">a Nik Iman project – 2025</div>
   </div>
 
-  <script>
-    window.addEventListener('scroll', () => {
-      const btn = document.querySelector('.insta-button');
-      const footer = document.querySelector('.footer');
-      const scrollTop = window.scrollY;
-      const triggerPoint = window.innerHeight * 0.3;
-
-      if (scrollTop > triggerPoint) {
-        btn.classList.add('show');
-        footer.classList.add('show');
-      }
-    });
-  </script>
+  <!-- Mobile -->
+  <div class="mobile-wrapper">
+    <img src="logo.png" alt="Logo" />
+    <div class="coming-soon">COMING SOON</div>
+    <a class="insta-button" href="https://instagram.com/yourusername" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+    </a>
+  </div>
+  <div class="footer mobile-only">a Nik Iman project – 2025</div>
 
 </body>
 </html>
