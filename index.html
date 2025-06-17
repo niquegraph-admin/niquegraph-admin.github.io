@@ -3,32 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Logo</title>
+  <title>Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background-color: black;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: white;
     }
+
+    .fade-in {
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     .centered-container {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Full screen height */
-      width: 100%;
+      height: calc(100vh - 50px); /* Leaves space for footer */
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
+
     img {
-      max-width: 80vw; /* Responsive width on desktop */
-      max-height: 80vh; /* Responsive height */
-      height: auto;
+      max-width: 60vw;
+      max-height: 30vh;
       width: auto;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .coming-soon {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      color: white;
+    }
+
+    .insta-button {
+      background: #ffffff;
+      color: #262626;
+      border: 1px solid #dbdbdb;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .insta-button:hover {
+      background: #efefef;
+    }
+
+    .footer {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      text-align: center;
+      padding-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="centered-container">
-    <img src="logo.png" alt="My Logo" />
+  <div class="centered-container fade-in">
+    <img src="logo.png" alt="Logo" />
+    <div class="coming-soon">COMING SOON</div>
+    <a class="insta-button" href="https://instagram.com/niquegraph" target="_blank">
+      Follow on Instagram
+    </a>
+  </div>
+
+  <div class="footer">
+    a Nik Iman project – 2025
   </div>
 </body>
 </html>
