@@ -31,7 +31,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: calc(100vh - 50px); /* Leaves space for footer */
+      height: calc(100vh - 50px); /* Leave space for footer */
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
@@ -47,25 +47,27 @@
 
     .coming-soon {
       font-size: 1.8rem;
-      margin-bottom: 30px;
+      margin-bottom: 40px; /* Increased space */
       letter-spacing: 2px;
       color: white;
     }
 
     .insta-button {
-      background: #ffffff;
-      color: #262626;
-      border: 1px solid #dbdbdb;
-      padding: 10px 25px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      color: white;
+      border: none;
+      padding: 12px 28px;
       border-radius: 8px;
       font-weight: 500;
       text-decoration: none;
       font-size: 1rem;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .insta-button:hover {
-      background: #efefef;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
     }
 
     .footer {
@@ -82,10 +84,10 @@
 </head>
 <body>
   <div class="centered-container fade-in">
-    <img src="logo.png" alt="Logo" />
+    <img src="logo.png" alt="niquegraph Studio." />
     <div class="coming-soon">COMING SOON</div>
     <a class="insta-button" href="https://instagram.com/niquegraph" target="_blank">
-      Follow on Instagram
+      Follow us on Instagram
     </a>
   </div>
 
