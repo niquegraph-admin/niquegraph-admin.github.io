@@ -18,15 +18,43 @@
       font-family: 'Poppins', sans-serif;
       background-color: #000;
       color: #fff;
+      overflow: hidden;
     }
 
     body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
     }
 
+    /* === Video === */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+      transition: opacity 2s ease;
+    }
+
+    .video-overlay.fade-out {
+      opacity: 1;
+    }
+
+    /* === Content === */
     .container {
       flex: 1;
       display: flex;
@@ -35,6 +63,12 @@
       flex-direction: column;
       text-align: center;
       padding: 20px;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .container.show {
+      opacity: 1;
     }
 
     .logo {
@@ -87,7 +121,7 @@
       padding: 10px;
     }
 
-    /* Animations */
+    /* === Animations === */
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -146,7 +180,17 @@
 </head>
 <body>
 
-  <div class="container">
+  <!-- 🔹 Background Video -->
+  <video class="video-bg" autoplay muted playsinline id="bgVideo">
+    <source src="your-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- 🔹 Black Overlay to fade in -->
+  <div class="video-overlay" id="videoOverlay"></div>
+
+  <!-- 🔹 Your Foreground Content -->
+  <div class="container" id="mainContent">
     <img class="logo fade-in" src="logo.png" alt="Logo" />
     <div class="coming-soon fade-in delay-1">COMING SOON</div>
 
@@ -160,6 +204,19 @@
   </div>
 
   <div class="footer">a Nik Iman project – 2025</div>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const overlay = document.getElementById('videoOverlay');
+    const content = document.getElementById('mainContent');
+
+    video.addEventListener('ended', () => {
+      overlay.classList.add('fade-out');
+      setTimeout(() => {
+        content.classList.add('show');
+      }, 2000); // Wait for overlay fade
+    });
+  </script>
 
 </body>
 </html>
