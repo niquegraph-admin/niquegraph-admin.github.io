@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
@@ -14,54 +14,26 @@
 
     html, body {
       height: 100%;
+      width: 100%;
       font-family: 'Poppins', sans-serif;
       background-color: #000;
       color: #fff;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       overflow: hidden;
     }
 
-    /* === Background Video === */
-    #bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
-
-    .video-overlay {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: black;
-      opacity: 0;
-      z-index: -1;
-      animation: fadeToBlack 1s ease forwards;
-      animation-delay: 30s;
-    }
-
-    @keyframes fadeToBlack {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     .container {
+      flex: 1;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      flex-direction: column;
       text-align: center;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 31s;
-      z-index: 1;
-      position: relative;
       padding: 20px;
     }
 
@@ -73,7 +45,7 @@
 
     .coming-soon {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .insta-button-desktop {
@@ -112,26 +84,38 @@
       text-align: center;
       color: rgba(255, 255, 255, 0.5);
       font-size: 0.85rem;
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      z-index: 1;
+      padding: 10px;
     }
 
+    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.5s;
+    }
+
+    .delay-2 {
+      animation-delay: 1s;
     }
 
     @media (max-width: 600px) {
-      .logo {
-        width: 75vw;
-        margin-bottom: 16px;
-      }
-
       .coming-soon {
         font-size: 1.3rem;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
       }
 
       .insta-button-desktop {
@@ -143,33 +127,38 @@
         justify-content: center;
         align-items: center;
       }
+
+      .logo {
+        width: 65vw;
+        margin-bottom: 16px;
+      }
+
+      .container {
+        justify-content: center;
+        height: calc(100vh - 40px); /* minus footer */
+      }
+
+      body {
+        overflow: hidden;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video autoplay muted playsinline id="bgVideo">
-    <source src="your-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-overlay"></div>
-
-  <!-- Content -->
   <div class="container">
-    <img class="logo" src="logo.png" alt="Logo" />
-    <div class="coming-soon">COMING SOON</div>
+    <img class="logo fade-in" src="logo.png" alt="Logo" />
+    <div class="coming-soon fade-in delay-1">COMING SOON</div>
 
-    <a class="insta-button-desktop" href="https://instagram.com/niquegraph" target="_blank">
+    <a class="insta-button-desktop fade-in delay-2" href="https://instagram.com/niquegraph" target="_blank">
       Follow us on Instagram
     </a>
 
-    <a class="insta-button-mobile" href="https://instagram.com/niquegraph" target="_blank">
+    <a class="insta-button-mobile fade-in delay-2" href="https://instagram.com/niquegraph" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
     </a>
   </div>
 
-  <!-- Footer -->
   <div class="footer">a Nik Iman project – 2025</div>
 
 </body>
