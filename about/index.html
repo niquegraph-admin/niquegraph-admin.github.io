@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – niquegraph</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body, html {
+      height: 100%;
+      background-color: #000;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sticky-header.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-header img {
+      height: 35px;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+      position: relative;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-left: 20px;
+    }
+
+    .hero img {
+      width: 500px;
+      margin: 0 auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      z-index: 1;
+    }
+
+    .background-container {
+      background: url('preview.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    .background-overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 60px 20px 60px;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 100px auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+      line-height: 1.5;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 40px 20px 20px;
+      background-color: #000;
+    }
+
+    .home-link {
+      text-decoration: underline;
+      color: white;
+      display: block;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .hero img {
+        width: 240px;
+      }
+
+      .section {
+        margin: 80px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sticky-header" id="stickyHeader">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+  <div class="hero" id="hero">
+    <img src="logo.png" alt="Logo" id="heroLogo" />
+    <div class="gradient-overlay"></div>
+  </div>
+
+  <div class="background-container">
+    <div class="background-overlay">
+      <div class="section fade-section" id="section1">
+        <h2>Background</h2>
+        <p>
+          niquegraph (Studio.) is established on the idea of premium designs tailored specifically to each one of our customers. We value collaborations and partnerships to create something amazing and truly you-nique. Not only just we guarantee you a premium result, but a premium relationship and workflow from start to finish.
+        </p>
+      </div>
+
+      <div class="section fade-section" id="section2">
+        <h2>Vision</h2>
+        <p>
+          To empower everyone with good graphic design.
+        </p>
+      </div>
+
+      <div class="section fade-section" id="section3">
+        <h2>Mission</h2>
+        <p>
+          To stay true to our intentions.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="home-link" onclick="window.location.href='https://niquegraph.com'">&larr; Back to Homepage</span>
+    <div>a Nik Iman project – 2025</div>
+  </footer>
+
+  <script>
+    const stickyHeader = document.getElementById('stickyHeader');
+    const hero = document.getElementById('hero');
+    window.addEventListener('scroll', () => {
+      const triggerHeight = hero.offsetHeight - 100;
+      if (window.scrollY > triggerHeight) {
+        stickyHeader.classList.add('visible');
+      } else {
+        stickyHeader.classList.remove('visible');
+      }
+    });
+
+    const sections = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
