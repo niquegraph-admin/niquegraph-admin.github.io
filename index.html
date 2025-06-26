@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9JL6B67TD4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9JL6B67TD4');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="favicon.png">
-  <title>Coming Soon</title>
+  <meta charset="UTF-8">
+  <title>Coming soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
       height: 100%;
-      width: 100%;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #111 100%);
       font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      color: white;
       overflow: hidden;
     }
 
-    .container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
+    .viewer-container {
+      width: 100%;
+      height: 100vh;
     }
 
-    .logo {
-      width: 350px;
-      height: auto;
-      margin-bottom: 20px;
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      background: transparent;
     }
+
+    .overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* make sure it's above the overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
 
     .coming-soon {
-      font-size: 2rem;
-      margin-bottom: 25px;
-    }
-
-    .insta-button-desktop {
-      display: inline-block;
-      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
+      font-size: 1.4rem;
       font-weight: 500;
-      transition: transform 0.2s ease;
     }
 
-    .insta-button-desktop:hover {
-      transform: scale(1.05);
-    }
+   .insta-button-desktop {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1); /* faint background to show shape */
+  border: 2px solid white;
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  mix-blend-mode: screen;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.insta-button-desktop:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 1);
+  background-image: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
     .insta-button-mobile {
       display: none;
-      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background:  rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
       padding: 12px;
       border-radius: 50%;
+      margin-top: 15px;
       transition: transform 0.2s ease;
-    }
-
-    .insta-button-mobile:hover {
-      transform: scale(1.1);
     }
 
     .insta-button-mobile img {
@@ -91,45 +90,47 @@
       height: 24px;
     }
 
+    .insta-button-mobile:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 1);
+  background-image: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  -webkit-background-clip: ;
+  -webkit-text-fill-color: transparent;
+
+    }
+
     .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
       text-align: center;
       color: rgba(255, 255, 255, 0.5);
       font-family: 'Montserrat', sans-serif;
       font-size: 0.85rem;
       padding: 10px;
+      z-index: 10;
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: underline;
+      display: block;
+      margin-bottom: 5px;
     }
 
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
+    .background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* <-- adjust opacity here */
+  z-index: 1;
+  pointer-events: none;
+}
 
-    .delay-1 {
-      animation-delay: 0.5s;
-    }
-
-    .delay-2 {
-      animation-delay: 1s;
-    }
-
+    /* ✅ Media Query for mobile */
     @media (max-width: 600px) {
-      .coming-soon {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
-      }
-
       .insta-button-desktop {
         display: none;
       }
@@ -139,44 +140,48 @@
         justify-content: center;
         align-items: center;
       }
-
-      .logo {
-        width: 65vw;
-        margin-bottom: 16px;
-      }
-
-      .container {
-        justify-content: center;
-        height: calc(100vh - 40px); /* minus footer */
-      }
-
-      body {
-        overflow: hidden;
-      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <img class="logo fade-in" src="logo.png" alt="Logo" />
-    <div class="coming-soon fade-in delay-1">COMING SOON</div>
+  <div class="viewer-container">
+    <model-viewer
+      src="logo.glb"
+      alt="3D Model"
+      auto-rotate
+      camera-controls
+      interaction-prompt="when-focused"
+      exposure="1"
+      shadow-intensity="1"
+      auto-rotate-delay="0"
+      camera-orbit="0deg 125deg 1.5m"
+      field-of-view="15deg"
+      style="--progress-bar-color: orange;">
+    </model-viewer>
+    <div class="background-overlay"></div>
+  </div>
 
-    <a class="insta-button-desktop fade-in delay-2" href="https://instagram.com/niquegraph" target="_blank">
+  <!-- Centered overlay content -->
+  <div class="overlay-content">
+    <div class="coming-soon">COMING SOON</div>
+
+    <!-- Desktop Button -->
+    <a class="insta-button-desktop" href="https://instagram.com/niquegraph" target="_blank">
       Follow us on Instagram
     </a>
 
-    <a class="insta-button-mobile fade-in delay-2" href="https://instagram.com/niquegraph" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
-    </a>
+    <!-- Mobile Icon -->
+    <a class="insta-button-mobile" href="https://instagram.com/niquegraph" target="_blank">
+  <img src="instagram-white-icon.svg" alt="Instagram Outline Icon" />
+</a>
   </div>
 
+  <!-- Footer outside overlay -->
   <div class="footer">
-  <a href="https://about.niquegraph.com" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; display: block; margin-bottom: 5px;">
-    About Us
-  </a>
-  a Nik Iman project – 2025
-</div>
+    <a href="https://about.niquegraph.com">About Us</a>
+    a Nik Iman project – 2025
+  </div>
 
 </body>
 </html>
