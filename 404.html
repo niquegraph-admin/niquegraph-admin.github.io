@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're lost</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #111 100%);
+      color: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 40px;
+      box-sizing: border-box;
+      max-width: 700px;
+    }
+
+    .error-block {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 200px;
+      font-weight: 700;
+      text-align: left;
+      text-shadow:
+        2px 2px 0 #000000,
+        4px 4px 0 #000,
+        0 0 10px rgba(255, 255, 255, 0.05);
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .shine {
+      display: inline-block;
+      background: linear-gradient(135deg, #333 0%, #444 40%, #888 60%, #333 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 400%;
+      animation: shineMove 3s infinite linear;
+    }
+
+    .subscript {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: -10px;
+      text-shadow:
+        1px 1px 0 #111,
+        0 0 10px rgba(255,255,255,0.1);
+      opacity: 0;
+      animation: fadeIn 1.6s ease forwards;
+    }
+
+    .music-player {
+      margin: 40px 0 10px 0;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      opacity: 0;
+      animation: fadeIn 2.2s ease forwards;
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2.4s ease forwards;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ff3535;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .slider::before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .toggle-switch input:checked + .slider {
+      background-color: #1DB954;
+    }
+
+    .toggle-switch input:checked + .slider::before {
+      transform: translateX(20px);
+    }
+
+    .toggle-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .message {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      opacity: 0;
+      animation: fadeIn 2.8s ease forwards;
+    }
+
+    .message b {
+      color: white;
+    }
+
+    .message a {
+      font-weight: bold;
+      color: white;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: none;
+      }
+    }
+
+    @keyframes shineMove {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .error-block {
+        font-size: 10rem;
+      }
+
+      .subscript {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-block"><span class="shine">505</span></div>
+    <div class="subscript">–101 (404)</div>
+
+    <div class="music-player">
+      <iframe id="music-embed" allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+       src="https://embed.music.apple.com/us/song/505/251499791?app-music"></iframe>
+    </div>
+
+    <div class="toggle-container">
+      <span class="toggle-label" id="platform-label">Apple Music</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle" onchange="togglePlayer()">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">Spotify</span>
+    </div>
+
+    <div class="message">
+      <b>The site you're looking for doesn't exist.....yet (or never).</b><br>
+      Find your way again at <a href="https://silkroad.niquegraph.com" target="_blank">silkroad.niquegraph.com</a>.
+    </div>
+  </div>
+
+  <script>
+    function togglePlayer() {
+      const iframe = document.getElementById('music-embed');
+      const toggle = document.getElementById('toggle');
+      const label = document.getElementById('platform-label');
+
+      if (toggle.checked) {
+        iframe.src = "https://open.spotify.com/embed/track/58ge6dfP91o9oXMzq3XkIS?utm_source=generator";
+        label.textContent = "Apple Music";
+      } else {
+        iframe.src = "https://embed.music.apple.com/us/song/505/251499791?app-music";
+        label.textContent = "Apple Music";
+      }
+    }
+  </script>
+</body>
+</html>
