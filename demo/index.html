@@ -395,6 +395,11 @@
         document.getElementById('spaces-section')?.classList.remove('touched');
       }
     });
+
+    const accessGranted = sessionStorage.getItem('nique_demo_access') === 'true';
+if (!accessGranted) {
+  window.location.href = '/'; // or show an "unauthorized" message
+}
   </script>
 </body>
 </html>
